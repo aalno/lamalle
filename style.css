@@ -1,0 +1,201 @@
+@font-face
+{
+	font-family: "AUdimat";
+	src:
+		local("AUdimat-Regular"),
+		url("res/AUdimat-Regular.otf") format("opentype");
+}
+
+@font-face
+{
+	font-family: "AUdimat";
+	src:
+		local("AUdimat-Bold"),
+		url("res/AUdimat-Bold.otf") format("opentype");
+	font-weight: bold;
+}
+
+@font-face
+{
+	font-family: "AUdimat";
+	src:
+		local("AUdimat-Italic"),
+		url("res/AUdimat-Italic.otf") format("opentype");
+	font-style: italic;
+}
+
+@font-face
+{
+	font-family: "AUdimat";
+	src:
+		local("AUdimat-BoldItalic"),
+		url("res/AUdimat-BoldItalic.otf") format("opentype");
+	font-weight: bold;
+	font-style: italic;
+}
+
+body, h1, section, nav, ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+	background-color: #026091;
+	color: white;
+	font-family: "Nunito Sans", sans-serif;
+	padding-top: 10vh;
+	padding-left: 10vw;
+	padding-right: 10vw;
+
+	user-select: none;
+}
+
+h1
+{
+	font-family: "AUdimat";
+}
+
+#titre h1
+{
+	text-align: center;
+	margin-bottom: 10vh;
+}
+
+#logo
+{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	height: 50vh;
+	opacity: 20%;
+	pointer-events: none;
+	z-index: -1;
+}
+
+#credits
+{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	opacity: 15%;
+	font-size: 0.5em;
+}
+
+nav, #sections
+{
+	display: inline-block;
+	vertical-align: top;
+}
+
+nav
+{
+	width: 20vw;
+}
+
+#sections
+{
+	position: relative;
+
+	width: 50vw;
+}
+
+section
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	color: #026091;
+
+	transition: color 1s;
+}
+
+section:target
+{
+	opacity: 1;
+	color: white;
+}
+
+nav:has(+ #sections #about:target) a[href="#about"],
+nav:has(+ #sections #origine:target) a[href="#origine"]
+{
+	font-weight: bold;
+	list-style-type: square;
+}
+
+nav ul
+{
+	margin-bottom: 5vh;
+}
+
+nav ul li
+{
+	list-style-type: none;
+	margin-bottom: 2vh;
+}
+
+nav ul li:hover { list-style-type: ">  "; }
+
+a
+{
+	color: inherit;
+	text-decoration: none;
+}
+
+@media (max-width:800px)
+{
+	html
+	{
+		scroll-behavior: smooth;
+		scroll-snap-type: y mandatory;
+	}
+
+	body
+	{
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+	}
+
+	#titre, nav, section
+	{
+		display: block;
+		position: initial;
+		width: 100vw;
+		height: 100vh;
+		box-sizing: border-box;
+
+		scroll-snap-align: start;
+
+		opacity: 1;
+		color: white;
+	}
+
+	#titre
+	{
+		line-height: 100vh;
+		text-align: center;
+	}
+
+	#titre span::after
+	{
+		content: "\a";
+		white-space: pre;
+	}
+
+	#titre h1
+	{
+		display: inline-block;
+		vertical-align: middle;
+		line-height: normal;
+	}
+
+	nav, section
+	{
+		padding-top: 10vh;
+		padding-left: 10vw;
+		padding-right: 10vh;
+	}
+}
